@@ -18,16 +18,181 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+.loader {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+  /** Loader BG Color **/
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  margin: 130px 0;
+  -webkit-perspective: 780px;
+  perspective: 780px;
+  opacity: 1;
+  /* Initially visible */
+  transition: opacity 0.5s ease;
+  /* Smooth transition for opacity */
+}
+
+/* Hide loading container when opacity is 0 */
+.loader.hide {
+  opacity: 0;
+  pointer-events: none;
+  /* Disable pointer events when hidden */
+}
+
+
+.loader-text {
+  font-family: serif;
+  font-style: italic;
+  letter-spacing: 1.5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #cecece;
+  /** Color of "Loading" text **/
+  z-index: 10;
+  /** Show on top **/
+  /*display: none;*/
+  /** Remove or Show "Loading" text **/
+
+}
+
+.load-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.load-inner.load-one {
+  left: 0%;
+  top: 0%;
+  border-bottom: 3px solid #5c5edc;
+  -webkit-animation: rotate1 1.15s linear infinite;
+  animation: rotate1 1.15s linear infinite;
+}
+
+.load-inner.load-two {
+  right: 0%;
+  top: 0%;
+  border-right: 3px solid #9147ff;
+  -webkit-animation: rotate2 10.15s 10.1s linear infinite;
+  animation: rotate2 1.15s 0.1s linear infinite;
+}
+
+.load-inner.load-three {
+  right: 0%;
+  bottom: 0%;
+  border-top: 3px solid #3b82f6;
+  -webkit-animation: rotate3 10.15s 10.15s linear infinite;
+  animation: rotate3 1.15s 0.15s linear infinite;
+}
+
+#content {
+  opacity: 0;
+  /* Initially hidden */
+  transition: opacity 1.5s ease;
+  /* Smooth transition for opacity */
+}
+
+/* Show content with fade-in effect */
+#content.show {
+  opacity: 1;
+  transition: opacity 1.5s ease;
+  color: #EEEEEE;
+  align-content: center;
+}
+
+
+@-webkit-keyframes rotate1 {
+  0% {
+    -webkit-transform: rotateX(45deg) rotateY(-45deg) rotateZ(0deg);
+    transform: rotateX(45deg) rotateY(-45deg) rotateZ(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotateX(45deg) rotateY(-45deg) rotateZ(360deg);
+    transform: rotateX(45deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate1 {
+  0% {
+    -webkit-transform: rotateX(45deg) rotateY(-45deg) rotateZ(0deg);
+    transform: rotateX(45deg) rotateY(-45deg) rotateZ(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotateX(45deg) rotateY(-45deg) rotateZ(360deg);
+    transform: rotateX(45deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@-webkit-keyframes rotate2 {
+  0% {
+    -webkit-transform: rotateX(45deg) rotateY(45deg) rotateZ(0deg);
+    transform: rotateX(45deg) rotateY(45deg) rotateZ(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotateX(45deg) rotateY(45deg) rotateZ(360deg);
+    transform: rotateX(45deg) rotateY(45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate2 {
+  0% {
+    -webkit-transform: rotateX(45deg) rotateY(45deg) rotateZ(0deg);
+    transform: rotateX(45deg) rotateY(45deg) rotateZ(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotateX(45deg) rotateY(45deg) rotateZ(360deg);
+    transform: rotateX(45deg) rotateY(45deg) rotateZ(360deg);
+  }
+}
+
+@-webkit-keyframes rotate3 {
+  0% {
+    -webkit-transform: rotateX(-60deg) rotateY(0deg) rotateZ(0deg);
+    transform: rotateX(-60deg) rotateY(0deg) rotateZ(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotateX(-60deg) rotateY(0deg) rotateZ(360deg);
+    transform: rotateX(-60deg) rotateY(0deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate3 {
+  0% {
+    -webkit-transform: rotateX(-60deg) rotateY(0deg) rotateZ(0deg);
+    transform: rotateX(-60deg) rotateY(0deg) rotateZ(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotateX(-60deg) rotateY(0deg) rotateZ(360deg);
+    transform: rotateX(-60deg) rotateY(0deg) rotateZ(360deg);
   }
 }
