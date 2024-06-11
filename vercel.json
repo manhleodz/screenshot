@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "pages/api/**/*.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "functions": {
+        "api/**/*": {
+            "memory": 3008,
+            "maxDuration": 10
+        }
+    }
+}
