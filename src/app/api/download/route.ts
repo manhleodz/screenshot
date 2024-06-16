@@ -2,7 +2,6 @@
 // app/api/capture/route.ts
 import { NextResponse } from 'next/server';
 import puppeteer from 'puppeteer';
-import chrome from 'chrome-aws-lambda';
 
 export async function POST(request: Request) {
     const { urls, width, fileType = 'png' } = await request.json();
@@ -14,9 +13,7 @@ export async function POST(request: Request) {
     try {
         const screenshots = [];
         const browser = await puppeteer.launch({
-            args: chrome.args,
-            executablePath: await chrome.executablePath,
-            headless: chrome.headless,
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
 
         for (const url of urls) {

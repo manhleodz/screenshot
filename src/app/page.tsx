@@ -35,14 +35,14 @@ export default function Home() {
 
   return (
     <div
-      className=" h-screen w-screen flex flex-col justify-start items-center"
-      style={{
-        backgroundImage: "url(https://a-static.besthdwallpaper.com/black-panther-s-name-made-his-face-wallpaper-1680x1050-101828_5.jpg)",
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundAttachment: 'fixed',
-        backgroundPosition: 'center'
-      }}
+      className=" h-full w-full min-h-screen bg-black flex flex-col justify-start items-center"
+      // style={{
+      //   backgroundImage: "url(https://a-static.besthdwallpaper.com/black-panther-s-name-made-his-face-wallpaper-1680x1050-101828_5.jpg)",
+      //   backgroundRepeat: 'no-repeat',
+      //   backgroundSize: 'cover',
+      //   backgroundAttachment: 'fixed',
+      //   backgroundPosition: 'center'
+      // }}
     >
       <h1 className=" text-white text-[40px] font-[600] mt-[100px]">Nhập địa chỉ trang web cần chụp</h1>
       <form onSubmit={handleSubmit} className="my-10 w-full flex flex-col items-center">
@@ -71,7 +71,7 @@ export default function Home() {
           <option value="640">640px</option>
         </select>
       </form>
-      <div className=" w-full h-[500px] flex items-center justify-center">
+      <div className=" w-full h-[500px] flex items-center justify-center max-md:flex-col max-md:justify-start">
         {excuting ? (
           <div className=" w-[700px] h-[500px] flex flex-col items-center justify-center border border-white p-2 rounded-2xl bg-gray-900">
             <center>
